@@ -852,7 +852,7 @@ this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
 this.anodiferen=-1*(2018-(this.floatano))/100;
 
   //this.mostrartexto(this.text_f1,"anteseno");
-this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2));//+Math.sin(this.anodiferen);
+this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
 this.mostrartexto(this.text_f1,"ln");
 this.mostrartexto(this.text_f1,this.anotem);
 //6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
@@ -861,7 +861,7 @@ this.tempalturamin=-0.00530303*parseFloat(this.altura)+25+this.anotem+(-31*Math.
 this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
         5.5111523119+this.anotem/6;
 //this.humedad="66";
-this.mostrartexto(this.text_f1,"anteseno");
+this.mostrartexto(this.text_f1,this.anotemno);
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
 
 
