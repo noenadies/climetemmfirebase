@@ -332,7 +332,7 @@ theplot.push(new Fooplot(document.getElementById('theplot')));
   var temmin=  String(editex.tempalturamin);
    var cer=  String(this.humedadinter);
 textoecua="sin(x*"+cer+")^2*"+ampli+"+"+temmin;
-
+textoecua="sin(x)";
 
 theplot[0].addPlot(String(textoecua),FOOPLOT_TYPE_FUNCTION,{'color':$(this).find('.data-color').val()});
 
