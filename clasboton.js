@@ -354,7 +354,7 @@ this.charantes_f3=[];
  
         this.tamanotexto_f3=vw*0.01;
    
-        this.style_f3 = { font: "bold "+String(vw*0.04)+"px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
+        this.style_f3 = { font: "bold "+String(vw*0.04)+"px Arial", fill: "#1080A4", boundsAlignH: "center", boundsAlignV: "middle" };
  
   
      
