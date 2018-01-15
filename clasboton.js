@@ -359,7 +359,7 @@ this.charantes_f3=[];
   
      
 
-       this.text_f3= game.add.text(this.text_f2.x, this.text_f2.y+33, "", this.style_f3);
+       this.text_f3= game.add.text(this.text_f2.x, this.text_f2.y+33, "acaestoyf3", this.style_f3);
    
     
        this.text_f3.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
