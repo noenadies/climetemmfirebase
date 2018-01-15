@@ -806,6 +806,7 @@ this.sprite.visible =false;
   
 }
 function fbtf3_onDown(){
+  this.mostrartexto(this.text_f1,"malparido");
 this.visiblebasico(true);
 this.booltexto_f2=false;
 this.booltexto_f3=true;
@@ -845,7 +846,7 @@ this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.21447834
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
 this.var=parseFloat("7")*4;
 
-this.mostrartexto(this.text_f1,"malparido");
+
 
 this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)*this.amplitud+this.tempalturamin;
 //alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
