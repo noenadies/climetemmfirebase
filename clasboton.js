@@ -843,11 +843,12 @@ this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.21447834
         5.5111523119+this.anotem/6;
 //this.humedad="66";
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
+this.var=parseFloat("7")*4;
 
-
+this.mostrartexto(this.text_f1,this.var);
 
 this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)*this.amplitud+this.tempalturamin;
-alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
+//alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
 this.mostrartexto(this.text_f3,this.temperatura);
 
 if(this.horatemp<=18.5){
@@ -6163,7 +6164,7 @@ btgraf.position.x=  btcero.position.x;
    btxmax.position.y=btxmin.position.y +vw*0.14;
 
 btf3.position.x= btxmax.position.x+vw*0.8;
-   btf3.position.y=btxmax.position.y;
+   btf3.position.y=btxmax.position.y-60;
 
  btxy.position.x=btxmin.position.x;
    btxy.position.y=btgraf.position.y +vw*0.24;
