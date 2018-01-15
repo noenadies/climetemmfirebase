@@ -167,6 +167,16 @@ this.acomhuemdad=0;
 this.ano="0";
     
 
+this.mes="1";
+this.dia="1";
+this.ano="2018";
+this.altura="4";
+this.amplitud="7";
+this.tempalturamin="24";
+this.humedad="66";
+
+
+
 
 
 
@@ -816,8 +826,7 @@ this.booltexto_xmin=false;
 this.booltexto_xmax=false;
 this.booltexto_dia=false;
 this.boolgrafi=true;
-this.var=parseFloat("7")*4;
-  this.mostrartexto(this.text_f1,this.var);
+
 /*
 if(this.booltexto_f3===true){
   this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
@@ -832,10 +841,13 @@ this.contarborrarchar_f3=this.contarborrarchar_f3+1;
 
 //this.altura="1018";
 //this.ano="2019";
+
+
 this.demesanos=parseFloat(this.mes)/12;
 this.dediaano=parseFloat(this.dia)/365;
 this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
-
+this.var=parseFloat("7")*4;
+  this.mostrartexto(this.text_f1,this.var);
 this.anodiferen=-1*(2018-(this.floatano))/100;
 this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
   
