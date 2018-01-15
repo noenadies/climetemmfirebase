@@ -860,7 +860,7 @@ this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,
 this.anotem=this.anotem*-1;
 
   }
-  else(){
+  if(this.anodiferenx>0){
     this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
 
   }
