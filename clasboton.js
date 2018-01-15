@@ -6080,8 +6080,7 @@ this.update=function(){
 
 
 
-    btf3.position.x= btcero.position.x+vw*0;
-   btf3.position.y=btcero.position.y-vh*0.66-20;
+ 
 btpunto.position.x= btcero.position.x+vw*0.17;
    btpunto.position.y=btcero.position.y;
 
@@ -6162,7 +6161,8 @@ btgraf.position.x=  btcero.position.x;
 
     btxmax.position.x=btxmin.position.x;
    btxmax.position.y=btxmin.position.y +vw*0.14;
-
+btf3.position.x= btxmax.position.x;
+   btf3.position.y=btcero.position.y-vh*0.66-20;
 
  btxy.position.x=btgraf.position.x;
    btxy.position.y=btgraf.position.y +vw*0.24;
