@@ -852,18 +852,17 @@ this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
 this.anodiferen=-1*(2018-(this.floatano))/100;
 
   //this.mostrartexto(this.text_f1,"anteseno");
-  if(this.anodiferenx<0){
+  if(this.anodiferen<0){
 
-this.anodiferenx=this.anodiferenx*-1;
+this.anodiferen=this.anodiferen*-1;
 
-this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
+this.anotem =6*Math.log(this.anodiferen+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
 this.anotem=this.anotem*-1;
 
   }
-  if(this.anodiferenx>0){
+  if(this.anodiferen>0){
     this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
-
-  }
+ }
 //this.anotem =6*Math.log(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
 this.mostrartexto(this.text_f1,"ln");
 this.mostrartexto(this.text_f1,this.anotem);
