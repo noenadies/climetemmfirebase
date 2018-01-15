@@ -847,7 +847,7 @@ this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
 
 
 this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)*this.amplitud+this.tempalturamin;
-alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
+//alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
 this.mostrartexto(this.text_f3,this.temperatura);
 
 if(this.horatemp<=18.5){
