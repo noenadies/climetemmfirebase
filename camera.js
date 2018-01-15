@@ -171,6 +171,19 @@ crearejes(ox,oy);
 }
 
 function update() {
+
+
+editex.horatemp=editex.valortexto_f2;
+editex.ano=editex.valortexto_f1;
+
+editex.humedad=editex.valortexto_xmin;
+editex.altura=editex.valortexto_xmax;
+editex.mes=editex.valortexto_mes;
+editex.dia=editex.valortexto_dia;
+
+
+
+
   fon.rotation += 0.005;
  if (this.joystick.properties.inUse) {
            
@@ -294,7 +307,10 @@ function act_btngraf(){var textoecua0="";
 
   editex.visiblebasico(false);
 if(true){
-
+var ampli=  String(editex.amplitud);
+  var temmin=  String(editex.tempalturamin);
+   var cer=  String(this.humedadinter);
+textoecua="sin(x*"+cer+")^2*"+ampli+"+"+temmin;
  
 textoecua="sin(x)";
 
@@ -315,55 +331,6 @@ theplot[0].addPlot(String(textoecua),FOOPLOT_TYPE_FUNCTION,{'color':$(this).find
    theplot[0].reDraw();
   colorf3='#F32D09';
     ecuacion();
-
-
-}
-if(editex.booltexto_f2){
-textoecua=editex.valortexto_f2;
-
-
-
-
-
-
-
-theplot=[];
-theplot.push(new Fooplot(document.getElementById('theplot')));
-
-
-
-
-theplot[0].addPlot(String(textoecua),FOOPLOT_TYPE_FUNCTION,{'color':$(this).find('.data-color').val()});
-
-
-   theplot[0].reDraw();
-  colorf2='#E9FA05';
-    ecuacion();
-}
-if(editex.booltexto_f1){
-textoecua=editex.valortexto_f1;
-
-
-
-
-
-
-
-
-theplot=[];
-theplot.push(new Fooplot(document.getElementById('theplot')));
-
-
-
-
-theplot[0].addPlot(String(textoecua),FOOPLOT_TYPE_FUNCTION,{'color':$(this).find('.data-color').val()});
-
- 
-   theplot[0].reDraw();
-  colorf1='#FA05AE';
-    ecuacion();
-
-
 
 
 }
