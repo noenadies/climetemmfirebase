@@ -806,8 +806,7 @@ this.sprite.visible =false;
   
 }
 function fbtf3_onDown(){
-  this.var=parseFloat("7")*4;
-  this.mostrartexto(this.text_f1,this.var);
+
 this.visiblebasico(true);
 this.booltexto_f2=false;
 this.booltexto_f3=true;
@@ -820,7 +819,7 @@ this.boolgrafi=true;
 if(this.valortexto_f3==='undefined'){
 this.valortexto_f3="";
   
-}
+}/*
 if(this.booltexto_f3===true){
   this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
    this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"";
@@ -830,7 +829,7 @@ if(this.booltexto_f3===true){
  
 
 this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
+}*/
 
 //this.altura="1018";
 //this.ano="2019";
@@ -840,6 +839,8 @@ this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
 
 this.anodiferen=-1*(2018-(this.floatano))/100;
 this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
+  this.var=parseFloat("7")*4;
+  this.mostrartexto(this.text_f1,this.var);
 this.tempalturamin=-0.00530303*parseFloat(this.altura)+25+this.anotem+(-31*Math.pow(parseFloat(this.humedad)/100-0.5,3));
 this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
         5.5111523119+this.anotem/6;
