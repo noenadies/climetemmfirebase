@@ -358,16 +358,16 @@ for(var i=1; i<fy1.length;i=i+1){
  arrayl.push(new Phaser.Point(fx1[i],fy1[i]));
 }
 
-
+/*
 if(editex.booltexto_minmax){
 var indicefy1=0;
 indicefy1=fy1.length/2;
 ox=Math.round(fx1[indicefy1]);
  oy=Math.round(fy1[indicefy1]);
  console.log(ox+"  "+oy);
-cambiartextx();
+//cambiartextx();
 }
-
+*/
 
 
 
