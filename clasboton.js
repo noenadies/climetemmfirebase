@@ -846,17 +846,19 @@ this.contarborrarchar_f3=this.contarborrarchar_f3+1;
 this.demesanos=parseFloat(this.mes)/12;
 this.dediaano=parseFloat(this.dia)/365;
 this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
-this.var=parseFloat("7")*4;
-  this.mostrartexto(this.text_f1,this.var);
+
+
+
 this.anodiferen=-1*(2018-(this.floatano))/100;
 this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
-  
+    this.mostrartexto(this.text_f1,"este");
 this.tempalturamin=-0.00530303*parseFloat(this.altura)+25+this.anotem+(-31*Math.pow(parseFloat(this.humedad)/100-0.5,3));
 this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
         5.5111523119+this.anotem/6;
 //this.humedad="66";
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
-this.var=parseFloat("7")*4;
+
+
 
 
 
