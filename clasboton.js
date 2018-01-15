@@ -354,12 +354,12 @@ this.charantes_f3=[];
  
         this.tamanotexto_f3=vw*0.01;
    
-        this.style_f3 = { font: "bold "+String(vw*0.04)+"px Arial", fill: "#1080A4", boundsAlignH: "center", boundsAlignV: "middle" };
+        this.style_f3 = { font: "bold "+String(vw*0.04)+"px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
  
   
      
 
-       this.text_f3= game.add.text(this.text_f2.x, this.text_f2.y+33, "acaestoyf3", this.style_f3);
+       this.text_f3= game.add.text(this.text_f2.x, this.text_f2.y+33, "", this.style_f3);
    
     
        this.text_f3.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
@@ -6163,7 +6163,7 @@ btgraf.position.x=  btcero.position.x;
    btxmax.position.y=btxmin.position.y +vw*0.14;
 
 btf3.position.x= btxmax.position.x+vw*0.8;
-   btf3.position.y=btxmax.position.y-76;
+   btf3.position.y=btxmax.position.y;
 
  btxy.position.x=btxmin.position.x;
    btxy.position.y=btgraf.position.y +vw*0.24;
