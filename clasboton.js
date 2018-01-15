@@ -850,8 +850,10 @@ this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
 
 
 this.anodiferen=-1*(2018-(this.floatano))/100;
+
+  this.mostrartexto(this.text_f1,"anteseno");
 this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
-    this.mostrartexto(this.text_f1,"este");
+  
 this.tempalturamin=-0.00530303*parseFloat(this.altura)+25+this.anotem+(-31*Math.pow(parseFloat(this.humedad)/100-0.5,3));
 this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
         5.5111523119+this.anotem/6;
