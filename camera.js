@@ -316,7 +316,7 @@ contyn=iy;
 
 
 function act_btngraf(){
-if(editex.boolgrafi){
+if(true){
   
   var textoecua0="";
 
