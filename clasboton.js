@@ -806,7 +806,8 @@ this.sprite.visible =false;
   
 }
 function fbtf3_onDown(){
-  this.mostrartexto(this.text_f1,"malparido");
+  this.var=parseFloat("7")*4;
+  this.mostrartexto(this.text_f1,this.var);
 this.visiblebasico(true);
 this.booltexto_f2=false;
 this.booltexto_f3=true;
