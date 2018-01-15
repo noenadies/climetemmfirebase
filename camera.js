@@ -312,7 +312,7 @@ var ampli=  String(editex.amplitud);
    var cer=  String(this.humedadinter);
 textoecua="sin(x*"+cer+")^2*"+ampli+"+"+temmin;
  
-//textoecua="sin(x)";
+textoecua="sin(x)";
 
 
 
