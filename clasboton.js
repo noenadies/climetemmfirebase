@@ -797,7 +797,7 @@ this.sprite.scale.set(vw*0.0012);
 this.sprite.x=bt.x+bt.width*0.01/2;
 this.sprite.y=bt.y;
 this.sprite.visible =true;
-this.sprite.animations.play('bt', 20, true);
+this.sprite.animation.splay('bt', 20, true);
 }
 function fbtf3_onOut(){
 this.sprite.animations.stop('bt',true);
@@ -834,28 +834,31 @@ this.contarborrarchar_f3=this.contarborrarchar_f3+1;
 
 //this.altura="1018";
 //this.ano="2019";
-/*
+
 this.demesanos=parseFloat(this.mes)/12;
 this.dediaano=parseFloat(this.dia)/365;
-this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;*/
-this.demesanos=parseFloat(2)/12;
+this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
+
+/*this.demesanos=parseFloat(2)/12;
 this.dediaano=parseFloat(15)/365;
 this.floatano=parseFloat(2018)+this.demesanos+this.dediaano;
-
+this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;*/
+this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
 
 //this.altura=2550;
 this.anodiferen=-1*(2018-(this.floatano))/100;
 //this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
 //this.tempalturamin=-0.00509803921568627*parseFloat(this.altura)+25+this.anotem;
 this.anotem=this.cambioclima(this.floatano);
-this.tempalturamin=-0.00509803921568627*parseFloat(this.altura)+24+ this.anotem; //this.anotem+this.arbol+this.minhumedadtem;
+console.log("añotem"+ this.anotem);
+this.tempalturamin=-0.00509803921568627*parseFloat(this.altura)+24+ this.anotem+this.arbol+this.minhumedadtem; //this.anotem+this.arbol+this.minhumedadtem;
 // calculos
 
 if(false){
   this.amplitud=12.22;}
 
 if(this.estandar){             //-0.00530303*parseFloat(this.altura)+25+this.anotem;
-this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
+this.amplitud=(-1.75571661329287/1000000*(parseFloat(this.altura)*parseFloat(this.altura))) +(5.2144783414/1000*(this.altura)) +
         5.5111523119+this.anotem/6;}
 //this.humedad="66";
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
@@ -884,25 +887,29 @@ this.temperatura=this.temperatura-1.8;
 
 if(this.estandar){
 
-this.tempalturamin=-0.005098039*parseFloat(this.altura)+24+ this.estandartemmmas(parseFloat(this.altura))+this.anotem;
- 
+this.tempalturamin=-0.005098039*parseFloat(this.altura)+24+ this.estandartemmmas(parseFloat(this.altura))+this.anotem+this.estandarhumemenos(parseFloat(this.humedad));
+ this.amplitud=(this.estandaramplitud(parseFloat(this.altura))+this.anotem/6);
 this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)
-*(this.estandaramplitud(parseFloat(this.altura))+this.anotem/6)+this.tempalturamin+
-this.estandarhumemenos(parseFloat(this.humedad));
-
+*this.amplitud+this.tempalturamin;
+if(parseFloat(this.horatemp)>=11&&parseFloat(this.altura)<2000){this.temperatura=this.temperatura+3}
 this.mostrartexto(this.text_f3,this.temperatura)
 
-console.log("this.estandaramplitu"+this.estandaramplitud(parseFloat(this.altura)));
+console.log("ththis.amplitud"+this.amplitud);
 console.log("this.estantemmas"+this.estandartemmmas(parseFloat(this.altura)));
 console.log("this.ehume"+this.estandarhumemenos(parseFloat(this.humedad)));
 }
-console.log("tem minima " +this.tempalturamin+" amplitid "+this.amplitud+this.anotem/6);
+console.log("tem minima " +this.tempalturamin+" amplitid "+this.amplitud);
 console.log("huem " +this.humedadinter+" temp ca "+this.temperatura);
 console.log("hora " +this.horatemp+" temp ca "+this.temperatura);
 
 console.log("minhumtem " +this.minhumedadtem+" arbol"+this.arbol);
 this.tunalbool=false;
 this.estandar=true;
+
+
+console.log("año " +this.ano+" mes "+this.mes+" dia "+ this.dia);
+console.log("hum " +this.humedad+" alt "+this.altura+" hora " +this.horatemp);
+
 }
 
 
@@ -5570,7 +5577,7 @@ function fbtasinh_onDown(){
 
 this.estandar=false;
 this.arbol=1;
-this.resta=1;
+this.resta=0;
 
 if(this.horatemp  >= 12 &&  this.horatemp< 15 ){this.resta=this.resta+3;}
 alert("kennedy");
@@ -5744,7 +5751,7 @@ alert("sancristobal");
 this.estandar=false;
 this.arbol=-1;
 
-this.resta=0;
+this.resta=-1;
 
 
 if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
@@ -5825,12 +5832,12 @@ this.sprite.visible =false;
   
 }// centroalto
 function fbtatanh_onDown(){
-
+this.amplitud=0;
 alert("centro alto");
 this.estandar=false;
 this.arbol=-1;
 
-this.resta=0;
+this.resta=-4;
 
 
 if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
@@ -5909,7 +5916,7 @@ alert("guaymaral");
 this.estandar=false;
 this.arbol=-1;
 
-this.resta=0;
+this.resta=-1;
 
 if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
 if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
@@ -5995,10 +6002,21 @@ alert("suba");
 this.estandar=false;
 this.arbol=-1;
 
-this.resta=-2.4;
+this.resta=-1;
 
-if(this.resta!=0){if(this.horatemp  < 6 ){this.amplitud=this.resta+ -1.19 ;} }
-      
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
+
+
+
+if(this.horatemp  >12 ){this.resta= -2 ;} 
+
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ -1.19 ;}          
 if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  -1.19 + this.resta  ;}
 if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  -0.4  + this.resta  ;}
 if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  3 + this.resta  ;}
@@ -6015,6 +6033,14 @@ if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  10  + this.r
 if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  12  + this.resta  ;}
 if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  17  + this.resta  ;}
 if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  16.4  + this.resta  ;}
+
+
+
+
+
+
+
+
 
 
 
@@ -6679,13 +6705,21 @@ this.cambioclima= function(x){
 
 
 this.estandaramplitud= function(x){
-
+if(parseFloat(this.horatemp)<11.4){
+return  6.0030135017748556e+000 * Math.pow(x,0)
+        + -1.5078233079884587e-003 * Math.pow(x,1)
+        +  5.3621028022349162e-007 * Math.pow(x,2);
+}else{
  return  6.9948622805765703e+000 * Math.pow(x,0)
         +  2.5701811416097052e-003 * Math.pow(x,1)
-        + -6.6071494642922970e-007 * Math.pow(x,2);
-
-
+        + -6.6071494642922970e-007 * Math.pow(x,2);}
 }
+
+
+
+
+
+
 
 
 
