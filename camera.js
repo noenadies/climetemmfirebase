@@ -193,6 +193,15 @@ function  f(x) {
 
 
 function update() {
+
+editex.mes=editex.valortexto_mes;
+editex.dia=editex.valortexto_dia;
+editex.ano=editex.valortexto_f1;
+editex.altura=editex.valortexto_xmax;
+editex.horatemp=editex.valortexto_f2;
+editex.humedad=editex.valortexto_xmin;
+
+
   fon.rotation += 0.005;
  if (this.joystick.properties.inUse) {
            
