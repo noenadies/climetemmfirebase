@@ -177,23 +177,22 @@ crearejes(ox,oy);
 
 
 
-
-
-
 }
 
+function  f(x) {
+   return -1.29900*100* Math.pow(x,0)
+        +  5.14833333*10 * Math.pow(x,1)
+        + -6.90000*1 * Math.pow(x,2)
+        +  3.16666666/10 * Math.pow(x,3);
+}
+
+
+
+
+
+
+
 function update() {
-
-
-editex.horatemp=editex.valortexto_f2;
-editex.ano=editex.valortexto_f1;
-
-editex.humedad=editex.valortexto_xmin;
-editex.altura=editex.valortexto_xmax;
-editex.mes=editex.valortexto_mes;
-editex.dia=editex.valortexto_dia;
-
-
   fon.rotation += 0.005;
  if (this.joystick.properties.inUse) {
            
@@ -316,7 +315,7 @@ contyn=iy;
 
 
 function act_btngraf(){
-if(true){
+if(editex.boolgrafi){
   
   var textoecua0="";
 
@@ -333,7 +332,7 @@ theplot.push(new Fooplot(document.getElementById('theplot')));
    var cer=  String(this.humedadinter);
 textoecua="sin(x*"+cer+")^2*"+ampli+"+"+temmin;
 
-//textoecua="sin(x)";
+
 theplot[0].addPlot(String(textoecua),FOOPLOT_TYPE_FUNCTION,{'color':$(this).find('.data-color').val()});
 
   
@@ -386,7 +385,7 @@ var ct=0;
 
 
  //graphics2.beginFill(0x027a71);
-    graphics2.lineStyle(9, 0x5BFFFE, 0.6);
+    graphics2.lineStyle(4, 0x5BFFFE, 0.6);
 graphics2.moveTo(mundox/2+(arrayl[n1].x-ox)*f,mundoy/2-(arrayl[n1].y-oy)*f);
 for(var i=1; i<arrayl.length;i=i+1){
   ct=ct;
