@@ -167,16 +167,6 @@ this.acomhuemdad=0;
 this.ano="0";
     
 
-this.mes="1";
-this.dia="1";
-this.ano="2018";
-this.altura="4";
-this.amplitud="7";
-this.tempalturamin="24";
-this.humedad="66";
-
-
-
 
 
 
@@ -815,8 +805,9 @@ this.sprite.visible =false;
 
   
 }
+//this.horatemp=17;
+this.estandar=true;
 function fbtf3_onDown(){
-
 this.visiblebasico(true);
 this.booltexto_f2=false;
 this.booltexto_f3=true;
@@ -826,8 +817,10 @@ this.booltexto_xmin=false;
 this.booltexto_xmax=false;
 this.booltexto_dia=false;
 this.boolgrafi=true;
-
-/*
+if(this.valortexto_f3==='undefined'){
+this.valortexto_f3="";
+  
+}
 if(this.booltexto_f3===true){
   this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
    this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"";
@@ -837,41 +830,47 @@ if(this.booltexto_f3===true){
  
 
 this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}*/
+}
 
 //this.altura="1018";
 //this.ano="2019";
-
-
+/*
 this.demesanos=parseFloat(this.mes)/12;
 this.dediaano=parseFloat(this.dia)/365;
-this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;
+this.floatano=parseFloat(this.ano)+this.demesanos+this.dediaano;*/
+this.demesanos=parseFloat(2)/12;
+this.dediaano=parseFloat(15)/365;
+this.floatano=parseFloat(2018)+this.demesanos+this.dediaano;
 
 
-
+//this.altura=2550;
 this.anodiferen=-1*(2018-(this.floatano))/100;
+//this.anotem =6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
+//this.tempalturamin=-0.00509803921568627*parseFloat(this.altura)+25+this.anotem;
+this.anotem=this.cambioclima(this.floatano);
+this.tempalturamin=-0.00509803921568627*parseFloat(this.altura)+24+ this.anotem; //this.anotem+this.arbol+this.minhumedadtem;
+// calculos
 
-  //this.mostrartexto(this.text_f1,"anteseno");
-this.anotem =6*Math.log(this.anodiferen+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))+Math.sin(this.anodiferen);
-this.mostrartexto(this.text_f1,"2ln");
-this.mostrartexto(this.text_f1,this.anotem);
-//6*Math.asinh(this.anodiferen)+Math.sin(this.anodiferen);
-  //6*ln(this.anodiferenx+Math.pow(Math.pow(this.anodiferen,2)+1,1/2))th.sin(this.anodiferen);
-this.tempalturamin=-0.00530303*parseFloat(this.altura)+25+this.anotem+(-31*Math.pow(parseFloat(this.humedad)/100-0.5,3));
+if(false){
+  this.amplitud=12.22;}
+
+if(this.estandar){             //-0.00530303*parseFloat(this.altura)+25+this.anotem;
 this.amplitud=(-1.75571661329287/1000000*(this.altura*this.altura)) +(5.2144783414/1000*(this.altura)) +
-        5.5111523119+this.anotem/6;
+        5.5111523119+this.anotem/6;}
 //this.humedad="66";
-this.mostrartexto(this.text_f1,this.anotemno);
 this.humedadinter=parseFloat(this.humedad)*0.02/100+0.11;
+//this.humedadinter=parseFloat(66)*0.02/100+0.11;
 
+//this.horatemp=17;
 
-
-
-
-this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)*this.amplitud+this.tempalturamin;
+this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)
+*this.amplitud+this.tempalturamin;
 //alert(this.ano+" alt "+this.altura+ " temin "+this.tempalturamin+  "si "+ this.amplitud+" hum" +this.humedadinter+" ano" +this.anotem/6);
-this.mostrartexto(this.text_f3,this.temperatura);
+if(this.tunalbool){this.temperatura=14.2
+alert("tunalaca");}
 
+this.mostrartexto(this.text_f3,this.temperatura);
+if(this.estandar){
 if(this.horatemp<=18.5){
 this.temperatura=this.temperatura;
   this.mostrartexto(this.text_f3,this.temperatura);
@@ -880,24 +879,30 @@ if(this.horatemp>18.5){
 this.temperatura=this.temperatura-1.8;
   this.mostrartexto(this.text_f3,this.temperatura);
 }
-
-if(this.horatemp<=11){
-
-this.temperatura=this.temperatura-(-0.6*this.horatemp+6.6);
-
-  this.mostrartexto(this.text_f3,this.temperatura);
 }
-if(parseFloat(this.humedad)>=98){
-this.temperatura=this.temperatura-2;
-  this.mostrartexto(this.text_f3,this.temperatura);
-}
-
-
-
 //aca
 
+if(this.estandar){
 
+this.tempalturamin=-0.005098039*parseFloat(this.altura)+24+ this.estandartemmmas(parseFloat(this.altura))+this.anotem;
+ 
+this.temperatura=Math.pow(Math.sin(this.humedadinter*parseFloat(this.horatemp)),2)
+*(this.estandaramplitud(parseFloat(this.altura))+this.anotem/6)+this.tempalturamin+
+this.estandarhumemenos(parseFloat(this.humedad));
 
+this.mostrartexto(this.text_f3,this.temperatura)
+
+console.log("this.estandaramplitu"+this.estandaramplitud(parseFloat(this.altura)));
+console.log("this.estantemmas"+this.estandartemmmas(parseFloat(this.altura)));
+console.log("this.ehume"+this.estandarhumemenos(parseFloat(this.humedad)));
+}
+console.log("tem minima " +this.tempalturamin+" amplitid "+this.amplitud+this.anotem/6);
+console.log("huem " +this.humedadinter+" temp ca "+this.temperatura);
+console.log("hora " +this.horatemp+" temp ca "+this.temperatura);
+
+console.log("minhumtem " +this.minhumedadtem+" arbol"+this.arbol);
+this.tunalbool=false;
+this.estandar=true;
 }
 
 
@@ -5524,7 +5529,9 @@ this.contarborrarchar_f3=this.contarborrarchar_f3+1;
 
 
 
-
+this.arbol=0;
+this.minhumedadtem=0;
+this.resta=0;
 
 
 // inica  boton asinh
@@ -5556,58 +5563,140 @@ this.sprite.visible =false;
 
   
 }
+// funcion para  kennedy
+
 function fbtasinh_onDown(){
 
 
+this.estandar=false;
+this.arbol=1;
+this.resta=1;
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
+if(this.horatemp  >= 12 &&  this.horatemp< 15 ){this.resta=this.resta+3;}
+alert("kennedy");
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
+
+
+if(this.horatemp>11.5 ){this.resta=1 ;}  
+
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ 3.7 ;}          
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  3.7 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  3.7 + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  6.1 + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  6.26  + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  6.3 + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  6.7 + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  7 + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  7 + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  6.6 + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  7.3 + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  7.2 + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  9 + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  12  + this.resta  ;}
+
+
+/*
+if(this.horatemp<=9){this.amplitud=fk6a9(this.horatemp);
+  function fk6a9(x) {
+    alert("kennedy69");
+   return  3.5903259277743191e+000 * Math.pow(x,0)
+        +  9.2511978147787610e-001 * Math.pow(x,1)
+        + -2.8969603644259023e-001 * Math.pow(x,2)
+        +  2.4699147542221495e-002 * Math.pow(x,3)
+        + -2.6774936252170137e-004 * Math.pow(x,4);
+}
+
+}
+if(this.horatemp>9 && this.horatemp<=11){this.amplitud=fk9a11(this.horatemp);
+function fk9a11(x) {
+
+   alert("kennedy911");
+   return  5.7387499999998830e+001 * Math.pow(x,0)
+        + -8.2054166666664354e+000 * Math.pow(x,1)
+        + -1.2500000000011391e-002 * Math.pow(x,2)
+        +  3.0416666666666668e-002 * Math.pow(x,3);
+}
+
+}
+
+
+if(this.horatemp>11 && this.horatemp<=14){this.amplitud=fk11a14(this.horatemp);
+function fk11a14(x) {
+
+   alert("kennedy1114");
+    return -1.4086000001147110e+002 * Math.pow(x,0)
+        +  3.6020000002775525e+001 * Math.pow(x,1)
+        + -2.9400000002228621e+000 * Math.pow(x,2)
+        +  8.0000000005938876e-002 * Math.pow(x,3);
+}
+
+}
+
+
+
+if(this.horatemp>14 && this.horatemp<=15){this.amplitud=fk14a15(this.horatemp);
+function fk14a15(x) {
+
+   alert("kennedy1415");
+   return  2.4999999999990106e+000 * Math.pow(x,0)
+        +  3.0000000000006821e-001 * Math.pow(x,1);
+}
+
+}
+
+if(this.horatemp>15 && this.horatemp<=16){this.amplitud=fk15a16(this.horatemp);
+function fk15a16(x) {
+
+   alert("kennedy1516");
+   return  7;
+}
+
+}
+
+
+if(this.horatemp>16 && this.horatemp<=18){this.amplitud=fk16a18(this.horatemp);
+function fk16a18(x) {
+
+   alert("kennedy1618");
   
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"asinh";
-
-
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
-
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
+  return  1.0415940656604674e+002 * Math.pow(x,0)
+        + -8.1423296744452074e+000 * Math.pow(x,1)
+        + -6.2922848273058940e-002 * Math.pow(x,2)
+        +  1.2018095064204133e-002 * Math.pow(x,3);
 }
 
-
-
-
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"asinh";
-
-
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
 }
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"asinh";
 
+if(this.horatemp>18 ){this.amplitud=fk18a24(this.horatemp);
+function fk18a24(x) {
 
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
+   alert("kennedy1824");
+  
+   return  1.1319999996981805e+003 * Math.pow(x,0)
+        + -1.6148333328674218e+002 * Math.pow(x,1)
+        +  7.5999999976069450e+000 * Math.pow(x,2)
+        + -1.1666666662576888e-001 * Math.pow(x,3);
+}
 
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
+}
+*/
+  
+
+// FIN 
 }
 
 
 
 
-
-
-
-
-
-}
 
 
 
@@ -5648,52 +5737,44 @@ this.sprite.visible =false;
 
   
 }
+// sancristobal
 function fbtacosh_onDown(){
 
+alert("sancristobal");
+this.estandar=false;
+this.arbol=-1;
+
+this.resta=0;
 
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
-  
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"acosh";
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
 
 
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
+if(this.horatemp >11.5 ){this.resta=this.resta+ 1 ;}   
 
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
-}
-
-
-
-
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"acosh";
-
-
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
-}
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"acosh";
-
-
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
-
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
-
-
-
-
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ 1 ;}          
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  1 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  2.2 + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  6.6 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  6.6 + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  7.5 + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  8.5 + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  9 + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  8.7 + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  8.9 + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  9.4 + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  10  + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  10  + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  10.5  + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  14  + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  16  + this.resta  ;}
 
 
 
@@ -5742,54 +5823,47 @@ this.sprite.animations.stop('bt',true);
 this.sprite.visible =false;
 
   
-}
+}// centroalto
 function fbtatanh_onDown(){
 
+alert("centro alto");
+this.estandar=false;
+this.arbol=-1;
+
+this.resta=0;
 
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
-  
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"atanh";
-
-
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
-
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
-}
-
-
-
-
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"atanh";
-
-
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
-}
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"atanh";
-
-
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
-
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
 
 
 
 
 
+
+if(this.horatemp  >12 ){this.resta=this.resta+ 1 ;} 
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ 6 ;}          
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  6 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  6 + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  6 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  8.5 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  11  + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  11.5  + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  10.5  + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  11  + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  11  + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  11  + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  11  + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  11  + this.resta  ;}
 
 
 
@@ -5831,46 +5905,43 @@ this.sprite.visible =false;
 }
 function fbtacoth_onDown(){
 
+alert("guaymaral");
+this.estandar=false;
+this.arbol=-1;
 
+this.resta=0;
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
-  
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"acoth";
-
-
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
-
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
-}
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
 
 
 
+if(this.horatemp  >12 ){this.resta= -2 ;} 
 
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"acoth";
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ -1.19 ;}          
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  -1.19 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  -0.4  + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  3 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  8 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  9.2 + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  11.3  + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  11.3  + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  12.5  + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  12.2  + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  12.2  + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  12.4  + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  11.9  + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  10  + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  17  + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  16.4  + this.resta  ;}
 
 
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
-}
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"acoth";
-
-
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
-
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
 
 
 
@@ -5920,49 +5991,30 @@ this.sprite.visible =false;
 }
 function fbtasech_onDown(){
 
+alert("suba");
+this.estandar=false;
+this.arbol=-1;
 
+this.resta=-2.4;
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
-  
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"asech";
-
-
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
-
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
-}
-
-
-
-
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"asech";
-
-
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
-}
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"asech";
-
-
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
-
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
-
-
-
+if(this.resta!=0){if(this.horatemp  < 6 ){this.amplitud=this.resta+ -1.19 ;} }
+      
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  -1.19 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  -0.4  + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  3 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  8 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  9.2 + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  11.3  + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  11.3  + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  12.5  + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  12.2  + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  12.2  + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  12.4  + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  11.9  + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  10  + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  12  + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  17  + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  16.4  + this.resta  ;}
 
 
 
@@ -5983,7 +6035,7 @@ this.contarborrarchar_f3=this.contarborrarchar_f3+1;
 
 // inica  boton acsch
 
-
+this.tunalbool=false;
 
 btacsch = game.add.sprite(vw/2, vh/2- vh/2, 'btacsch');
 btacsch.scale.set(vw*0.0012);
@@ -6012,53 +6064,43 @@ this.sprite.visible =false;
 }
 function fbtacsch_onDown(){
 
+// tunal
+this.estandar=false;
+this.arbol=1;
+this.resta=-4;
 
+alert("tunal");
+if(parseFloat(this.humedad)<60&&parseFloat(this.humedad)>=40){this.minhumedadtem=0;}
+if(parseFloat(this.humedad)<65&&parseFloat(this.humedad)>=60){this.minhumedadtem=-0.3;}
+if(parseFloat(this.humedad)<70&&parseFloat(this.humedad)>=65){this.minhumedadtem=-1.1;}
+if(parseFloat(this.humedad)<100&&parseFloat(this.humedad)>=70){this.minhumedadtem=-1.6;}
+if(parseFloat(this.humedad)<40&&parseFloat(this.humedad)>=35){this.minhumedadtem=0.4;}
+if(parseFloat(this.humedad)<35&&parseFloat(this.humedad)>=20){this.minhumedadtem=1.2;}
+if(parseFloat(this.humedad)<20&&parseFloat(this.humedad)>=0){this.minhumedadtem=1.9;}
 
-if(this.valortexto_f1=='undefined'){
-this.valortexto_f1="";
-  
-}
-if(this.booltexto_f1===true){
-  this.charantes_f1[this.contarborrarchar_f1]=this.valortexto_f1;
-   this.valortexto_f1=this.charantes_f1[this.contarborrarchar_f1]+"acsch";
-
-
-    this.mostrartexto(this.text_f1,this.valortexto_f1);
- 
-
-this.contarborrarchar_f1=this.contarborrarchar_f1+1;
-}
-
-
-
-
-if(this.booltexto_f2===true){
-  this.charantes_f2[this.contarborrarchar_f2]=this.valortexto_f2;
-   this.valortexto_f2=this.charantes_f2[this.contarborrarchar_f2]+"acsch";
-
-
-    this.mostrartexto(this.text_f2,this.valortexto_f2);
- 
-
-this.contarborrarchar_f2=this.contarborrarchar_f2+1;
-}
-if(this.booltexto_f3===true){
-  this.charantes_f3[this.contarborrarchar_f3]=this.valortexto_f3;
-   this.valortexto_f3=this.charantes_f3[this.contarborrarchar_f3]+"acsch";
-
-
-    this.mostrartexto(this.text_f3,this.valortexto_f3);
- 
-
-this.contarborrarchar_f3=this.contarborrarchar_f3+1;
-}
+if(this.horatemp  < 6 ){this.amplitud=this.resta+ 3.7 ;}          
+if(this.horatemp  >=  6 &&  this.horatemp<  7 ){this.amplitud=  3.7 + this.resta  ;}
+if(this.horatemp  >=  7 &&  this.horatemp<  8 ){this.amplitud=  3.7 + this.resta  ;}
+if(this.horatemp  >=  8 &&  this.horatemp<  9 ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  9 &&  this.horatemp<  10  ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  10  &&  this.horatemp<  11  ){this.amplitud=  4 + this.resta  ;}
+if(this.horatemp  >=  11  &&  this.horatemp<  12  ){this.amplitud=  6.1 + this.resta  ;}
+if(this.horatemp  >=  12  &&  this.horatemp<  13  ){this.amplitud=  6.26  + this.resta  ;}
+if(this.horatemp  >=  13  &&  this.horatemp<  14  ){this.amplitud=  6.3 + this.resta  ;}
+if(this.horatemp  >=  14  &&  this.horatemp<  15  ){this.amplitud=  6.7 + this.resta  ;}
+if(this.horatemp  >=  15  &&  this.horatemp<  16  ){this.amplitud=  7 + this.resta  ;}
+if(this.horatemp  >=  16  &&  this.horatemp<  17  ){this.amplitud=  7 + this.resta  ;}
+if(this.horatemp  >=  17  &&  this.horatemp<  18  ){this.amplitud=  6.6 + this.resta  ;}
+if(this.horatemp  >=  18  &&  this.horatemp<  19  ){this.amplitud=  7.3 + this.resta  ;}
+if(this.horatemp  >=  19  &&  this.horatemp<  20  ){this.amplitud=  7.2 + this.resta  ;}
+if(this.horatemp  >=  20  &&  this.horatemp<  21  ){this.amplitud=  9 + this.resta  ;}
+if(this.horatemp  >=  21  &&  this.horatemp<  0 ){this.amplitud=  12  + this.resta  ;}
 
 
 
+//if(true){this.amplitud=5.4}
 
-
-
-
+this.tunalbool=true;
 
 
 }
@@ -6102,7 +6144,8 @@ this.update=function(){
 
 
 
-    
+    btf3.position.x= btcero.position.x+vw*0;
+   btf3.position.y=btcero.position.y-vh*0.66-20;
 btpunto.position.x= btcero.position.x+vw*0.17;
    btpunto.position.y=btcero.position.y;
 
@@ -6184,10 +6227,8 @@ btgraf.position.x=  btcero.position.x;
     btxmax.position.x=btxmin.position.x;
    btxmax.position.y=btxmin.position.y +vw*0.14;
 
-btf3.position.x= btxmax.position.x+vw*0.8;
-   btf3.position.y=btxmax.position.y-60;
 
- btxy.position.x=btxmin.position.x;
+ btxy.position.x=btgraf.position.x;
    btxy.position.y=btgraf.position.y +vw*0.24;
    this.josty=btxy.position.y
 
@@ -6622,7 +6663,48 @@ objtext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
 
 
+this.cambioclima= function(x){
 
+   return  -( 2.7359999995557914e+001 * Math.pow(2018,0)
+        + -4.0999999995550498e-002 * Math.pow(2018,1)
+        +  1.3999999998887624e-005 * Math.pow(2018,2))+
+        ( 2.7359999995557914e+001 * Math.pow(x,0)
+        + -4.0999999995550498e-002 * Math.pow(x,1)
+        +  1.3999999998887624e-005 * Math.pow(x,2));
+
+}
+
+
+
+
+
+this.estandaramplitud= function(x){
+
+ return  6.9948622805765703e+000 * Math.pow(x,0)
+        +  2.5701811416097052e-003 * Math.pow(x,1)
+        + -6.6071494642922970e-007 * Math.pow(x,2);
+
+
+}
+
+
+
+this.estandartemmmas= function(x){
+
+  return  2.2204460492503131e-016 * Math.pow(x,0)
+        +  3.8508849635138891e-003 * Math.pow(x,1)
+        + -1.3704216952006721e-006 * Math.pow(x,2);
+
+}
+
+
+
+this.estandarhumemenos= function(x){
+   return  2.0000000000000000e+000 * Math.pow(x,0)
+        + -4.8333333333333395e-002 * Math.pow(x,1)
+        +  1.6666666666666745e-004 * Math.pow(x,2);
+
+}
 
 
 
